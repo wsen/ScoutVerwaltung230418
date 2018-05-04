@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author tlubowiecki
+ * @author itomski
  */
 public class App {
     

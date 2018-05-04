@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author tlubowiecki
+ * @author itomski
  */
 public class Scout {
     
