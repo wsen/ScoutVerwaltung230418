@@ -12,10 +12,9 @@ public class Scout {
     private String firstname;
     private String lastname;
     private LocalDate birthdate;
-    private boolean aktive;
+    private boolean active;
 
     public Scout() {
-        this("ohne Vornamen", "ohne Nachnamen");
     }
     
     public Scout(String firstname, String lastname) {
@@ -55,16 +54,28 @@ public class Scout {
         this.birthdate = birthdate;
     }
 
-    public boolean isAktive() {
-        return aktive;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setAktive(boolean aktive) {
-        this.aktive = aktive;
+    public void setActive(boolean active) {
+        this.active = active;
     }
-    
+
     @Override
     public String toString() {
-        return "Name: " + firstname + " " + lastname;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name:")
+                .append(firstname)
+                .append(" ")
+                .append(lastname)
+                .append("\n")
+                .append("Geburtrsdatum: ")
+                .append(birthdate)
+                .append("\n")
+                .append("Aktiv: ")
+                .append(active);
+        
+        return sb.toString();
     }
 }
