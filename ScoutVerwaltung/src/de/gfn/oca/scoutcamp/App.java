@@ -44,7 +44,7 @@ public class App {
             
             
             
-            /*
+            
             String firstname = scanner.next();
             String lastname = scanner.next();
             
@@ -54,7 +54,7 @@ public class App {
             Scout s = new Scout(firstname, lastname);
             app.scouts.add(s);
             System.out.println(s);
-            */
+            
         }
         
         //TODO: Scouts in die Datenbank oder Datei schreiben
