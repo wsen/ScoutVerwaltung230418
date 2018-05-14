@@ -2,6 +2,12 @@ package de.gfn.oca.scoutcamp;
 
 import de.gfn.oca.scoutcamp.entity.Scout;
 import de.gfn.oca.scoutcamp.helper.ScoutHelper;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -20,9 +26,12 @@ public class App {
               "\n----------------------------\n"
             + "  N: Neuen Scout anlegen\n"
             + "  L: Alle Scouts auflisten\n"
+            + "  S: Scouts suchen\n"
+            + "  L: Einen Scout bearbeiten\n"
             + "  X: Programm verlassen\n"
             + "----------------------------\n\n";
     
+    private static final String SER_FILE = "data.ser";
     
     public static void main(String[] args) {
         
@@ -33,7 +42,8 @@ public class App {
         
         App app = new App();
         
-        //TODO: Scouts aus Datenbank oder Datei lesen
+        app.read();
+        
         boolean exit = false;
         
         while(!exit) {
@@ -54,13 +64,50 @@ public class App {
                     System.out.println("\n-----------------\n\n");
                     break;
                     
+                case "S":
+                    System.out.println("Suche");
+                    break;
+                    
+                case "E":
+                    System.out.println("Bearbeiten");
+                    break;    
+                    
                 case "X": System.out.println("Exit");
                     exit = true;
                     break;
             }
         }
         
-        //TODO: Scouts in die Datenbank oder Datei schreiben
+        app.save();
         System.out.println("END");
+    }
+    
+    private void read() {
+        //TODO: Scouts aus Datenbank oder Datei lesen
+        try(FileInputStream fis = new FileInputStream(SER_FILE);
+                ObjectInputStream ois = new ObjectInputStream(fis)) {
+            scouts = (List<Scout>) ois.readObject();
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Keine Daten-Datei vorhanden. Es wird eine neue erstellt.");
+        }
+        catch(IOException ex) {
+            System.out.println("Daten-Datei konnt nicht gelesen werden.");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("Daten-Datei konnt nicht verarbeitet werden.");
+        }
+    }
+    
+    private void save() {
+        //TODO: Scouts in die Datenbank oder Datei schreiben
+        try(FileOutputStream fos = new FileOutputStream(SER_FILE);
+                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(scouts);
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Daten konnten nicht gespeichert werden.");
+        }
     }
 }
