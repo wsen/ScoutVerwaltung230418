@@ -1,12 +1,13 @@
 package de.gfn.oca.scoutcamp.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author tlubowiecki
  */
-public class Scout {
+public class Scout implements Serializable {
     
     private int id;
     private String firstname;
