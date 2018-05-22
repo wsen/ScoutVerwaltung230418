@@ -2,6 +2,7 @@ package de.gfn.oca.scoutcamp;
 
 import de.gfn.oca.scoutcamp.entity.Scout;
 import de.gfn.oca.scoutcamp.helper.ScoutHelper;
+import de.gfn.oca.scoutcamp.mapper.ScoutMapper;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,6 +34,16 @@ public class App {
     
     private static final String SER_FILE = "data.ser";
     
+    public static void main(String[] args) {
+        
+        ScoutMapper sm = new ScoutMapper();
+        sm.find();
+        
+    }
+    
+    
+    
+    /*
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
@@ -81,6 +92,7 @@ public class App {
         app.save();
         System.out.println("END");
     }
+    */
     
     private void read() {
         //TODO: Scouts aus Datenbank oder Datei lesen
