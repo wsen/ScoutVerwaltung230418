@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @author tlubowiecki
  */
-public class Scout implements Serializable {
+public class Scout extends AbstractEntity {
     
     private int id;
     private String firstname;
