@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package de.gfn.oca.scoutcamp.mapper;
-import de.gfn.oca.scoutcamp.AbstractEntity;
+//import de.gfn.oca.scoutcamp.entity.Scout;
+
+import de.gfn.oca.scoutcamp.mapper.AbstractMapper;
+import java.util.List;
 
 
 /**
  *
  * @author student
  */
-public class ScoutMapper extend AbstractMapper<Scout>{
+public class ScoutMapper extends AbstractMapper<Scout>{
     
 }

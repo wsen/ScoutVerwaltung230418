@@ -1,6 +1,6 @@
 package de.gfn.oca.scoutcamp.entity;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -9,6 +9,8 @@ import java.time.LocalDate;
  */
 public class Scout extends AbstractEntity {
     
+    //JPA - Hybernate ist nur eine Umsetzung davon
+    //Spring - MVC dort bereits vorhanden
     private int id;
     private String firstname;
     private String lastname;
