@@ -1,19 +1,16 @@
 package de.gfn.oca.scoutcamp.entity;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author tlubowiecki
  */
-public class Scout implements Serializable {
+public class Scout extends AbstractEntity {
     
-    private int id;
     private String firstname;
     private String lastname;
     private LocalDate birthdate;
-    private boolean active;
 
     public Scout() {
     }
@@ -23,14 +20,6 @@ public class Scout implements Serializable {
         this.lastname = lastname;
     }
     
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getFirstname() {
         return firstname;
     }
@@ -54,15 +43,7 @@ public class Scout implements Serializable {
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -74,9 +55,14 @@ public class Scout implements Serializable {
                 .append("Geburtrsdatum: ")
                 .append(birthdate)
                 .append("\n")
-                .append("Aktiv: ")
-                .append(active);
+                .append("Status: ")
+                .append(getStatus());
         
         return sb.toString();
+    }
+
+    @Override
+    public String[] toArray() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
