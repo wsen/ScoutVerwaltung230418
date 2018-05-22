@@ -30,8 +30,8 @@ public class ScoutHelper {
         System.out.print("Geburtrsdatum (TT.MM.JJJJ): ");
         scout.setBirthdate(LocalDate.parse(scanner.next(), FORMATTER));
         
-        System.out.print("Aktiv: ");
-        scout.setActive(scanner.nextBoolean());
+        System.out.print("Status: ");
+        scout.setStatus(scanner.nextInt());
         
         return scout;
     }

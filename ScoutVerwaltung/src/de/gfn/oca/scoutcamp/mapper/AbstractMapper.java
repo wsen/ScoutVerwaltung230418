@@ -1,19 +1,20 @@
 package de.gfn.oca.scoutcamp.mapper;
 
 import de.gfn.oca.scoutcamp.entity.AbstractEntity;
+import java.util.List;
 
 /**
  *
  * @author Administrator
  */
-public abstract class AbstractMapper {
+public abstract class AbstractMapper<T extends AbstractEntity> {
     
     //CRUD
-    public abstract AbstractEntity find();
+    public abstract List<T> find();
     
-    public abstract AbstractEntity find(int id);
+    public abstract T find(int id);
     
-    public boolean save(AbstractEntity entity) {
+    public boolean save(T entity) {
         
         if(entity.getId() > 0) {
             return update(entity);
@@ -23,9 +24,9 @@ public abstract class AbstractMapper {
         }
     }
     
-    public boolean insert(AbstractEntity entity) {
-    }
+    protected abstract boolean insert(T entity);
     
-    public boolean update(AbstractEntity entity) {
-    }
+    protected abstract boolean update(T entity);
+    
+    public abstract boolean delete(T entity);
 }
