@@ -36,12 +36,49 @@ public class App {
     
     public static void main(String[] args) {
         
-        ScoutMapper sm = new ScoutMapper();
-        sm.find();
+        Scanner scanner = new Scanner(System.in);
         
+        System.out.println(CONTROLS);
+        
+        App app = new App();
+        
+        ScoutMapper sm = new ScoutMapper();
+        
+        boolean exit = false;
+        
+        while(!exit) {
+            
+            switch(scanner.next().toUpperCase()) {
+                
+                case "N":
+                    System.out.println("Gib die Daten des Scouts ein.");
+                    Scout scout = ScoutHelper.setByInput(new Scout(), scanner);
+                    sm.save(scout);
+                    System.out.println("Scout wurde gespeichert.");
+                    break;
+                    
+                case "L":
+                    System.out.println("\n-----------------");
+                    for(Scout s : sm.find()) {
+                        System.out.println(s);
+                    }
+                    System.out.println("\n-----------------\n\n");
+                    break;
+                    
+                case "S":
+                    System.out.println("Suche");
+                    break;
+                    
+                case "E":
+                    System.out.println("Bearbeiten");
+                    break;    
+                    
+                case "X": System.out.println("Exit");
+                    exit = true;
+                    break;
+            }
+        }
     }
-    
-    
     
     /*
     public static void main(String[] args) {

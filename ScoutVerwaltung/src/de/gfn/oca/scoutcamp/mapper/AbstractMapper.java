@@ -1,6 +1,7 @@
 package de.gfn.oca.scoutcamp.mapper;
 
 import de.gfn.oca.scoutcamp.entity.AbstractEntity;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -29,4 +30,6 @@ public abstract class AbstractMapper<T extends AbstractEntity> {
     protected abstract boolean update(T entity);
     
     public abstract boolean delete(T entity);
+    
+    public abstract T create(ResultSet result);
 }

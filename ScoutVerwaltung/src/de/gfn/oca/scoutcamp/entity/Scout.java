@@ -47,16 +47,26 @@ public class Scout extends AbstractEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Name:")
+        sb.append("id: ")
+                .append(getId())
+                .append("\n")
+                .append("Name: ")
                 .append(firstname)
                 .append(" ")
                 .append(lastname)
                 .append("\n")
-                .append("Geburtrsdatum: ")
+                .append("Geburtsdatum: ")
                 .append(birthdate)
                 .append("\n")
                 .append("Status: ")
-                .append(getStatus());
+                .append(getStatus())
+                .append("\n")
+                .append("Created: ")
+                .append(getCreated())
+                .append("\n")
+                .append("Updated: ")
+                .append(getUpdated())
+                .append("\n");
         
         return sb.toString();
     }
