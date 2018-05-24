@@ -13,12 +13,12 @@ public class DBManager {
     static private DBManager instance;
     
     private static final String HOST = "jdbc:mysql://localhost";
-    // Standardport MySQL 3306
-    private static final int PORT = 8889;
+    // Standardport MySQL 3306 not 8889
+    private static final int PORT = 3306;
     private static final String DB_NAME = "scoutbase2018";
     private static final String USER = "root";
     // XAMPP DB Passwort für root ist leer
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
 
     private DBManager() {
     }
@@ -31,6 +31,7 @@ public class DBManager {
     }
     
     public Connection getConnection() throws SQLException {
+        System.out.println("DBConnection String: " + HOST + ":" + PORT + "/" + DB_NAME + "," + USER + "," + PASSWORD);
         return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, USER, PASSWORD);
     }
 }
