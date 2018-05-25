@@ -31,6 +31,8 @@ public class DBManager {
     }
     
     public Connection getConnection() throws SQLException {
+        //Class.forName("com.mysql.jbdc.Driver"); // Konkrekte Implementierung des DB Drivers
+        // Not needed: weil wir Type4 Class Driver benutzen
         //System.out.println("DBConnection String: " + HOST + ":" + PORT + "/" + DB_NAME + "," + USER + "," + PASSWORD);
         return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, USER, PASSWORD);
     }
