@@ -31,7 +31,7 @@ public class DBManager {
     }
     
     public Connection getConnection() throws SQLException {
-        System.out.println("DBConnection String: " + HOST + ":" + PORT + "/" + DB_NAME + "," + USER + "," + PASSWORD);
+        //System.out.println("DBConnection String: " + HOST + ":" + PORT + "/" + DB_NAME + "," + USER + "," + PASSWORD);
         return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, USER, PASSWORD);
     }
 }
