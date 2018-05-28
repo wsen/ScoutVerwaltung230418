@@ -28,7 +28,8 @@ public class App {
             + "  N: Neuen Scout anlegen\n"
             + "  L: Alle Scouts auflisten\n"
             + "  S: Scouts suchen\n"
-            + "  L: Einen Scout bearbeiten\n"
+            + "  E: Einen Scout bearbeiten\n"
+            + "  D: Einen Scout löschen\n"
             + "  X: Programm verlassen\n"
             + "----------------------------\n\n";
     
@@ -66,12 +67,43 @@ public class App {
                     break;
                     
                 case "S":
-                    System.out.println("Suche");
+                    System.out.print("Suche: ");
+                    String search = scanner.next();
+                    for(Scout s : sm.find(search)) {
+                        System.out.println(s);
+                    }
                     break;
                     
                 case "E":
-                    System.out.println("Bearbeiten");
+                    System.out.print("Id: ");
+                    {
+                        int id = scanner.nextInt();
+                        Scout s = sm.find(id);
+                        if(s == null) {
+                            System.out.println("Scout mit dieser ID nicht gefunden!");
+                        }
+                        else {
+                            ScoutHelper.setByInput(s, scanner);
+                            sm.save(s);
+                            System.out.println("Scout wurde geändert.");
+                        }
+                    }
                     break;    
+                
+                case "D": 
+                    System.out.print("Id: ");
+                    {
+                        int id = scanner.nextInt();
+                        Scout s = sm.find(id);
+                        if(s == null) {
+                            System.out.println("Scout mit dieser ID nicht gefunden!");
+                        }
+                        else {
+                            sm.delete(s);
+                            System.out.println("Scout wurde gelöscht.");
+                        }
+                    }
+                    break;
                     
                 case "X": System.out.println("Exit");
                     exit = true;

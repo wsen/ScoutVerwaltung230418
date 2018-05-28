@@ -3,6 +3,7 @@ package de.gfn.oca.scoutcamp;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  *
@@ -31,6 +32,23 @@ public class DBManager {
     }
     
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, USER, PASSWORD);
+        /* Ab JDBC 4 nicht mehr nötig
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch(ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        */
+        
+        // Alles als ein String
+        //return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME + "?user=" + USER + "&password=" + PASSWORD);
+        // User und Password getrennt
+        //return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, USER, PASSWORD);
+        // Mit Properties
+        Properties prop = new Properties();
+        prop.put("user", USER);
+        prop.put("password", PASSWORD);
+        return DriverManager.getConnection(HOST + ":" + PORT + "/" + DB_NAME, prop);
     }
 }
